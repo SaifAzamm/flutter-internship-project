@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            //Status bar
             Container(
               height: 280.h,
               width: MediaQuery.of(context).size.width,
@@ -133,6 +134,8 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
+
+                  //Status bar row
                   Positioned(
                     bottom: 0,
                     width: MediaQuery.of(context).size.width,
@@ -153,6 +156,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+            //title
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Align(
@@ -179,6 +183,8 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+
+            //Horizontal list
             Container(
               height: 172.h,
               color: Colors.transparent,
@@ -216,6 +222,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+
             const SizedBox(height: 25),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -246,6 +253,8 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 30,
             ),
+
+            //vertical list
             const schedule(
                 titleColor: Color.fromARGB(255, 221, 71, 71),
                 subColor: Color.fromARGB(255, 235, 139, 139),
