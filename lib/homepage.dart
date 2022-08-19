@@ -1,35 +1,11 @@
-import 'package:dzentra/performanceList.dart';
+import 'package:dzentra/widgets/circleIcon.dart';
+import 'package:dzentra/widgets/performanceCard.dart';
+import 'package:dzentra/widgets/schedule.dart';
+import 'package:dzentra/widgets/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-// List performanceListView = [
-//   {
-//     "progressText": '12/40',
-//     "title": 'Attendance',
-//     "subTitle": 'Working Hours\nexceeded by 3 hours',
-//     "containerColor": Colors.blue,
-//     "progrssTextColor": Colors.white,
-//     "progressColor": Colors.yellow
-//   },
-//   {
-//     "progressText": '12/40',
-//     "title": 'Attendance',
-//     "subTitle": 'Working Hours\nexceeded by 3 hours',
-//     "containerColor": Colors.blue,
-//     "progrssTextColor": Colors.white,
-//     "progressColor": Colors.yellow
-//   },
-//   {
-//     "progressText": '12/40',
-//     "title": 'Attendance',
-//     "subTitle": 'Working Hours\nexceeded by 3 hours',
-//     "containerColor": Colors.blue,
-//     "progrssTextColor": Colors.white,
-//     "progressColor": Colors.yellow
-//   }
-// ];
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -107,29 +83,25 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Row(
                                     children: [
-                                      const Text(
-                                        'Hey, ',
-                                        style:
-                                            TextStyle(color: Color(0xffFAFAFA)),
+                                      TextWidget(
+                                          text: 'Hey, ',
+                                          textColor: Color(0xffFAFAFA)),
+                                      TextWidget(
+                                        text: 'Afrin',
+                                        textColor: const Color(0xffFAFAFA),
+                                        size: 20.sp,
                                       ),
-                                      Text('Afrin',
-                                          style: TextStyle(
-                                              color: const Color(0xffFAFAFA),
-                                              fontSize: 20.sp))
                                     ],
                                   ),
-                                  const Text(
-                                    '18445',
-                                    style: TextStyle(color: Color(0xffFAFAFA)),
-                                  ),
-                                  const Text(
-                                    'Instructor',
-                                    style: TextStyle(color: Color(0xffFAFAFA)),
-                                  ),
-                                  const Text(
-                                    'Physics',
-                                    style: TextStyle(color: Color(0xffFAFAFA)),
-                                  ),
+                                  TextWidget(
+                                      text: '18445',
+                                      textColor: Color(0xffFAFAFA)),
+                                  TextWidget(
+                                      text: 'Instructor',
+                                      textColor: Color(0xffFAFAFA)),
+                                  TextWidget(
+                                      text: 'Physics',
+                                      textColor: Color(0xffFAFAFA)),
                                 ],
                               ),
                               Column(
@@ -148,12 +120,11 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   const SizedBox(height: 5),
-                                  Text(
-                                    'Instructor ID:18445',
-                                    style: TextStyle(
-                                        color: const Color(0xffFAFAFA),
-                                        fontSize: 12.sp),
-                                  ),
+                                  TextWidget(
+                                    text: 'Instructor ID:18445',
+                                    textColor: const Color(0xffFAFAFA),
+                                    size: 12.sp,
+                                  )
                                 ],
                               )
                             ],
@@ -190,27 +161,61 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 10),
-                    Text(
-                      "Hello, Afrin!",
-                      style: TextStyle(
-                          fontSize: 30.sp,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600),
+                    TextWidget(
+                      text: "Hello, Afrin!",
+                      textColor: Colors.black,
+                      size: 30.sp,
+                      fontWeight: FontWeight.w600,
                     ),
                     const SizedBox(height: 10),
-                    Text(
-                      "Your Activity",
-                      style: TextStyle(
-                          fontSize: 20.sp,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500),
+                    TextWidget(
+                      text: "Your Activity",
+                      textColor: Colors.black,
+                      size: 20.sp,
+                      fontWeight: FontWeight.w500,
                     ),
                     const SizedBox(height: 10),
                   ],
                 ),
               ),
             ),
-            const PerformanceList(),
+            Container(
+              height: 172.h,
+              color: Colors.transparent,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: const [
+                  performanceWidget(
+                      containerColor: Color.fromARGB(255, 255, 121, 121),
+                      percentText: '12/40',
+                      subColor: Color.fromARGB(255, 242, 225, 225),
+                      subtitle: 'Working hours\nexceeded by 3 hours',
+                      title: 'Attendance',
+                      titleColor: Colors.white),
+                  performanceWidget(
+                      containerColor: Color.fromARGB(255, 250, 255, 101),
+                      percentText: "30%",
+                      subColor: Color.fromARGB(255, 133, 89, 83),
+                      subtitle: 'Excellent result',
+                      title: 'Assignments',
+                      titleColor: Color.fromARGB(255, 69, 46, 43)),
+                  performanceWidget(
+                      containerColor: Color.fromARGB(255, 38, 50, 215),
+                      percentText: "30%",
+                      subColor: Color.fromARGB(255, 210, 208, 208),
+                      subtitle: 'Excellent performance',
+                      title: 'Attendance',
+                      titleColor: Colors.white),
+                  performanceWidget(
+                      containerColor: Color.fromARGB(255, 45, 234, 101),
+                      percentText: "30%",
+                      subColor: Color.fromARGB(255, 46, 43, 43),
+                      subtitle: 'Excellent performance',
+                      title: 'Attendance',
+                      titleColor: Color.fromARGB(255, 48, 46, 46)),
+                ],
+              ),
+            ),
             const SizedBox(height: 25),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -241,359 +246,43 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 30,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        '10:00 AM',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Image.asset(
-                        'assets/qrcode.png',
-                        fit: BoxFit.contain,
-                        height: 70.h,
-                        width: 70.w,
-                      )
-                    ],
-                  ),
-                  Container(
-                    height: 90.h,
-                    width: 255.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.r),
-                        color: const Color.fromARGB(255, 250, 209, 223)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10, top: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Basic Physics',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 221, 71, 71)),
-                          ),
-                          const SizedBox(
-                            height: 9,
-                          ),
-                          Row(
-                            children: const [
-                              Icon(
-                                Icons.location_pin,
-                                color: Color.fromARGB(255, 235, 139, 139),
-                                size: 15,
-                              ),
-                              Text(
-                                '  Physics Building Floor 2. 1A',
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 235, 139, 139)),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 9,
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                  height: 15,
-                                  width: 25,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(4.r),
-                                    color: Colors.grey,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      '+24',
-                                      style: TextStyle(
-                                          fontSize: 10.sp,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  )),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
+            const schedule(
+                titleColor: Color.fromARGB(255, 221, 71, 71),
+                subColor: Color.fromARGB(255, 235, 139, 139),
+                backColor: Color.fromARGB(255, 250, 209, 223),
+                subtitle: '  Physics Building Floor 2. 1A',
+                time: '10:00 AM',
+                title: 'Basic Physics'),
             const SizedBox(
               height: 10,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        '11:00 AM',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Image.asset(
-                        'assets/qrcode.png',
-                        fit: BoxFit.contain,
-                        height: 70.h,
-                        width: 70.w,
-                      )
-                    ],
-                  ),
-                  Container(
-                    height: 90.h,
-                    width: 255.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.r),
-                        color: const Color.fromARGB(255, 217, 244, 252)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10, top: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Basic Physics',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 8, 60, 75)),
-                          ),
-                          const SizedBox(
-                            height: 9,
-                          ),
-                          Row(
-                            children: const [
-                              Icon(
-                                Icons.location_pin,
-                                color: Color.fromARGB(255, 25, 116, 141),
-                                size: 15,
-                              ),
-                              Text(
-                                '  Physics Building Floor 2. 1A',
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 25, 116, 141)),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 9,
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                  height: 15,
-                                  width: 25,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(4.r),
-                                    color: Colors.grey,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      '+24',
-                                      style: TextStyle(
-                                          fontSize: 10.sp,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  )),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
+            const schedule(
+                titleColor: Color.fromARGB(255, 8, 60, 75),
+                subColor: Color.fromARGB(255, 25, 116, 141),
+                backColor: Color.fromARGB(255, 217, 244, 252),
+                subtitle: '  Physics Building Floor 2. 1A',
+                time: '11:00 AM',
+                title: 'Basic Physics'),
             const SizedBox(
               height: 10,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        '12:00 AM',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Image.asset(
-                        'assets/qrcode.png',
-                        fit: BoxFit.contain,
-                        height: 70.h,
-                        width: 70.w,
-                      )
-                    ],
-                  ),
-                  Container(
-                    height: 90.h,
-                    width: 255.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.r),
-                        color: const Color.fromARGB(255, 250, 209, 223)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10, top: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Basic Physics',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 221, 71, 71)),
-                          ),
-                          const SizedBox(
-                            height: 9,
-                          ),
-                          Row(
-                            children: const [
-                              Icon(
-                                Icons.location_pin,
-                                color: Color.fromARGB(255, 235, 139, 139),
-                                size: 15,
-                              ),
-                              Text(
-                                '  Physics Building Floor 2. 1A',
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 235, 139, 139)),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 9,
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                  height: 15,
-                                  width: 25,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(4.r),
-                                    color: Colors.grey,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      '+24',
-                                      style: TextStyle(
-                                          fontSize: 10.sp,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  )),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
+            const schedule(
+                titleColor: Color.fromARGB(255, 221, 71, 71),
+                subColor: Color.fromARGB(255, 235, 139, 139),
+                backColor: Color.fromARGB(255, 250, 209, 223),
+                subtitle: '  Physics Building Floor 2. 1A',
+                time: '12:00 AM',
+                title: 'Basic Physics'),
             const SizedBox(
               height: 10,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        '01:00 PM',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Image.asset(
-                        'assets/qrcode.png',
-                        fit: BoxFit.contain,
-                        height: 70.h,
-                        width: 70.w,
-                      )
-                    ],
-                  ),
-                  Container(
-                    height: 90.h,
-                    width: 255.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.r),
-                        color: const Color.fromARGB(255, 217, 244, 252)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10, top: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Basic Physics',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 8, 60, 75)),
-                          ),
-                          const SizedBox(
-                            height: 9,
-                          ),
-                          Row(
-                            children: const [
-                              Icon(
-                                Icons.location_pin,
-                                color: Color.fromARGB(255, 25, 116, 141),
-                                size: 15,
-                              ),
-                              Text(
-                                '  Physics Building Floor 2. 1A',
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 25, 116, 141)),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 9,
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                  height: 15,
-                                  width: 25,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(4.r),
-                                    color: Colors.grey,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      '+24',
-                                      style: TextStyle(
-                                          fontSize: 10.sp,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  )),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
+            const schedule(
+                titleColor: Color.fromARGB(255, 8, 60, 75),
+                subColor: Color.fromARGB(255, 25, 116, 141),
+                backColor: Color.fromARGB(255, 217, 244, 252),
+                subtitle: '  Physics Building Floor 2. 1A',
+                time: '01:00 PM',
+                title: 'Basic Physics'),
             const SizedBox(
               height: 30,
             )
@@ -605,30 +294,3 @@ class _HomePageState extends State<HomePage> {
 }
 
 // ignore: non_constant_identifier_names
-Widget circleIcon(dynamic iconName, iconTitle) {
-  return Column(
-    children: [
-      Container(
-        height: 63.h,
-        width: 63.w,
-        decoration: BoxDecoration(boxShadow: [
-          BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 2.r,
-              blurRadius: 8.r,
-              offset: const Offset(0, 7))
-        ], shape: BoxShape.circle, color: Colors.white),
-        child: Icon(
-          iconName,
-          size: 30,
-          color: Colors.blue,
-        ),
-      ),
-      const SizedBox(height: 10),
-      Text(
-        iconTitle,
-        style: TextStyle(color: Colors.black, fontSize: 13.sp),
-      )
-    ],
-  );
-}
