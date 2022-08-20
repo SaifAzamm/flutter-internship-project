@@ -96,13 +96,13 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   TextWidget(
                                       text: '18445',
-                                      textColor: Color(0xffFAFAFA)),
+                                      textColor: const Color(0xffFAFAFA)),
                                   TextWidget(
                                       text: 'Instructor',
-                                      textColor: Color(0xffFAFAFA)),
+                                      textColor: const Color(0xffFAFAFA)),
                                   TextWidget(
                                       text: 'Physics',
-                                      textColor: Color(0xffFAFAFA)),
+                                      textColor: const Color(0xffFAFAFA)),
                                 ],
                               ),
                               Column(
